@@ -156,6 +156,7 @@ print(list_of_tuples)
 """
 
 # functions
+
 """
 # our function is going to say "hi" to the user
 # give descriptive names; "sayhi" or "say_hi" are both ok
@@ -358,6 +359,7 @@ s = "abcd"
 print(s[::-1])
 """
 
+# lesson 1
 
 """
 print(8 / 2 * (2 + 2))
@@ -370,21 +372,116 @@ print(8 % 3)
 # // rounds down
 print(14 / 3)
 print(14 // 3)
-"""
 
-# print(Decimal(10.01))
-#
-# print('77' * str(10))
-# print("Ana" * "Ion")
+print(Decimal(10.01))
 
-# print(float('10.70'))   # через , не сработает
-#
-# type(10.0)
-# print(type('10.0'))
-#
-# print(locals())  # like in debugger
+print('77' * str(10))
+print("Ana" * "Ion")
+
+print(float('10.70'))   # через , не сработает
+
+type(10.0)
+print(type('10.0'))
+
+print(locals())  # like in debugger
 
 a = input("Enter your name: ")
 print(a)
+"""
 
+# 2D lists and nested loops
+
+"""
+# list of lists; 4 rows, 3 columns
+number_grid = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [0]
+]
+# accessing elements
+print(number_grid[0][0])  # row 0, column 0 -> 1
+print(number_grid[0][2])  # row 0, column 2 -> 3
+print(number_grid[2][1])  # row 2, column 2 -> 8
+
+# print out all the elements
+for row in number_grid:
+    for col in row:
+        print(col)
+"""
+
+# build a translator (replace all vowels with a "g")
+
+"""
+def translate(phrase):
+    result = ""
+    # loop through every letter; vowel? -> g
+    for letter in phrase:
+        if letter in "AEIOUaeiou":
+            if letter.isupper():
+                result += "G"
+            else:
+                result += "g"
+        else:
+            result += letter
+    return result
+
+
+print(translate(input("Enter a phrase: ")))
+"""
+
+# catching errors (Try Except)
+
+"""
+# you can store an error via
+# except as err (it will print out something relevant automatically)
+
+try:
+    value = 10/0
+    number = int(input("Enter a number:\n"))
+    print(number)
+except ZeroDivisionError as err:
+    print(err)
+except ValueError:
+    print("Invalid input")
+"""
+
+# reading files
+
+"""
+# r - read, w - write, a - append (just add some info to the end of the file), r+ - read and write
+# once you're done reading a file, close it
+my_file = open("1.txt", "r")
+
+# is the file readable? returns a boolean
+# print(my_file.readable())
+
+# reads the whole file
+# print(my_file.read())
+
+
+# print(my_file.readline())  # reads the first line in the file, and then moves the cursor to the next line
+# print(my_file.readline())  # so that this is the next line being printed out
+
+# print(my_file.readlines())   # put all lines to an array
+# print(my_file.readlines()[1])   # access a specific line in the array
+
+for name in my_file.readlines():
+    print(name)
+
+
+my_file.close()
+"""
+
+# writing to files
+
+"""
+my_file = open("1.txt", "a")  # change to a to append, to w to write and replace
+# my_file2 = open("12.txt", "w")  # creates another file, wow
+# my_file3 = open("index.html", "w")  # creates another file, wow
+
+my_file.write("\nToby Star")
+# my_file3.write("<p>This is HTML </p>")
+my_file.close()
+"""
 
