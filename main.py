@@ -487,6 +487,7 @@ my_file.close()
 
 # slice notation
 
+"""
 a = "Anastasia"
 #
 # print(a[0])  # the first letter
@@ -499,6 +500,8 @@ a = "Anastasia"
 # print(a[:-3])  # everything except the last 3 items   (:-3 is like go on from the beginning till -3 not including it)
 
 """
+
+"""
 -3 - это просто отрицательный индекс
 -3: - двоеточие после -3, значит идем от -3 до конца направо (включая -3)
 :-3 - двоеточие до -3, значит идем от начала до -3 (исключая -3)
@@ -506,10 +509,11 @@ a = "Anastasia"
 двоеточие слева? исключаем. 
 двоеточие справа? включаем. 
 """
-#
-# print(a[::-1])  # all items reversed
-# print(a[1::-1])  # the first two items, reversed
+
 """
+print(a[::-1])  # all items reversed
+print(a[1::-1])  # the first two items, reversed
+
 a[::-1]    # all items in the array, reversed
 a[1::-1]   # the first two items, reversed
 a[:-3:-1]  # the last two items, reversed
@@ -522,9 +526,9 @@ Reverse an array using slice notation:
 |   |   нет конца
 | до какого элемента?
 1 - Какие элементы? 0, 1
-
 """
 
+"""
 c = "Gleb"
 print("\n")
 print(c + " " + c[2:0:-1]) # Gleb el
@@ -545,3 +549,4 @@ print(a[::-1])
 print(a[:2])
 
 print(a)
+"""
