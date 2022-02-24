@@ -485,3 +485,63 @@ my_file.write("\nToby Star")
 my_file.close()
 """
 
+# slice notation
+
+a = "Anastasia"
+#
+# print(a[0])  # the first letter
+# print(a[-1])  # the last letter
+# # a[start:stop:step], stop is not included
+# print(a[0:5:2])  # start at index 0, go until 5 (not included), step 2
+#
+# print(a[-3])  # the 3rd element from the end  - s
+# print(a[-3:])  # the last 3 items in the array - sia   (-3: is like go on from -3 till the end)
+# print(a[:-3])  # everything except the last 3 items   (:-3 is like go on from the beginning till -3 not including it)
+
+"""
+-3 - это просто отрицательный индекс
+-3: - двоеточие после -3, значит идем от -3 до конца направо (включая -3)
+:-3 - двоеточие до -3, значит идем от начала до -3 (исключая -3)
+
+двоеточие слева? исключаем. 
+двоеточие справа? включаем. 
+"""
+#
+# print(a[::-1])  # all items reversed
+# print(a[1::-1])  # the first two items, reversed
+"""
+a[::-1]    # all items in the array, reversed
+a[1::-1]   # the first two items, reversed
+a[:-3:-1]  # the last two items, reversed
+a[-3::-1]  # everything except the last two items, reversed
+
+Reverse an array using slice notation:
+
+[start:stop:step]
+|   |   | тут всегда -1, чтобы каждый раз был 1 шаг назад
+|   |   нет конца
+| до какого элемента?
+1 - Какие элементы? 0, 1
+
+"""
+
+c = "Gleb"
+print("\n")
+print(c + " " + c[2:0:-1]) # Gleb el
+
+b = "Anastasia"
+print("\n")
+print(b + "-" + b[3:0:-1])  # reverse the part of array that consists of elements 0, 1, 2, 3 but without 0
+# Anastasia-san
+print("\n")
+# Anastasia
+# [0; -3]
+print(a[1::-1])  # the first two items, reversed
+print(a[:-3:-1])  # the last two items, reversed
+print(a[-3::-1])  # everything except the last two items, reversed
+
+print(a[::-1])
+
+print(a[:2])
+
+print(a)
