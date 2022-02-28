@@ -59,6 +59,7 @@ print(a)
 # Fix following python script, si it will execute without errors.
 # a = input()
 # a += 1
+
 """
 a = int(input())  # we need it to be int to make a sum
 a += 1
