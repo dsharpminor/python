@@ -1,13 +1,14 @@
-# Сумма каких двух чисел из массива равна третьему?
+# Work in progress
+# "# Сумма каких двух чисел из массива равна третьему?
 
-
+'''
 s = Solution()
 nums = [7, 19, 5, 5, 1]
 target = 10
 s.twoSum(nums, target)
 # проблема в том что nums.index() берет первый индекс
 
-'''
+
 def indices(my_list, value):
     return [i for i, x in enumerate(my_list) if x == value]
 
