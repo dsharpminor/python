@@ -25,7 +25,7 @@ print("Im Erdnusswald hatten " + str(2) + " Zwerge ein Haus")
 # Ex 3
 # Write a program that will prompt user about his name, age, and hobby.
 
-"""
+
 name = input("Hi, user! What is your name?\n")
 try:
     age = input("Nice to meet you! I am Prohor. How old are you, " + name + "?\n")
@@ -38,7 +38,7 @@ hobby = input("I remember being " + age + " years old! Just kidding. I am a macb
               + name + ", what is your main hobby?\n")
 print("Cool! Now I know everything about you, " + name + ".\nYou are " + age + " and your main hobby is "
       + hobby + ".\nThat's a cool hobby, by the way. I'd like doing it too if I were human, I guess.\n")
-"""
+
 
 # Ex 4
 # What value will have variable a, after code execution?

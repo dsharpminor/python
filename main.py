@@ -550,3 +550,61 @@ print(a[:2])
 
 print(a)
 """
+
+# Classes and Objects
+
+"""
+# not everything can be covered by built-in data types -> we have classes and objects
+# treat them like data types that you can create for anything you want
+# you can model anything and create a real world object
+
+from Student import Student
+# from the Student file I want to import the Student Class
+# an object is just an instance of a Class
+
+student1 = Student("Anastasia", "Computer Science", 9.6, True)
+student2 = Student("Pam", "Art", 7.4, False)
+
+print(student1.name, student1.gpa)
+print(student2.name, student2.gpa)
+"""
+
+# Multiple Choice Quiz
+
+from Question import Question
+
+question_prompts = [
+    "What color are apples?\n (a) Red/Green\n (b) Purple\n (c) Orange\n",
+    "What color are bananas?\n (a) Teal\n (b) Magenta\n (c) Yellow\n",
+    "What color are strawberries?\n (a) Yellow\n (b) Red\n (c) Blue\n"
+]
+
+questions = [
+    Question(question_prompts[0], "a"),
+    Question(question_prompts[1], "c"),
+    Question(question_prompts[2], "b"),
+]
+
+
+def run_test(list_of_questions):
+    score = 0
+    for question in questions:
+        try:
+            answer = input(question.prompt + "\n")  # print out questions[0]
+            if answer == question.answer:
+                score += 1
+            if answer not in "abc":
+                raise ValueError()
+        except ValueError:
+            print("Please pick \"a\", \"b\" or \"c\".")
+            while answer not in "abc":
+                answer = input(question.prompt + "\n")  # print out questions[0]
+                if answer == question.answer:
+                    score += 1
+        print("You got " + str(score) + "/" + str(len(questions)) + " correct")
+
+
+# we keep track of what we ask and what we ask
+
+
+run_test(question_prompts)
