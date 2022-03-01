@@ -300,7 +300,7 @@ for f in friends:
     print(f)
 
 
-for i in "Giraffe Academy":
+for i in "freeCodeCamp":
     print(i)
 
 
@@ -485,7 +485,7 @@ my_file.write("\nToby Star")
 my_file.close()
 """
 
-# slice notation
+# slice notation, slicing
 
 """
 a = "Anastasia"
@@ -498,7 +498,8 @@ a = "Anastasia"
 # print(a[-3])  # the 3rd element from the end  - s
 # print(a[-3:])  # the last 3 items in the array - sia   (-3: is like go on from -3 till the end)
 # print(a[:-3])  # everything except the last 3 items   (:-3 is like go on from the beginning till -3 not including it)
-
+# [:5] not specified beginning -> from 0
+# [5:] not specifies ending -> till the end
 """
 
 """
@@ -571,6 +572,7 @@ print(student2.name, student2.gpa)
 
 # Multiple Choice Quiz
 
+"""
 from Question import Question
 
 question_prompts = [
@@ -606,5 +608,27 @@ def run_test(list_of_questions):
 
 # we keep track of what we ask and what we ask
 
-
 run_test(question_prompts)
+"""
+
+# function objects
+
+"""
+from Student import Student
+
+student1 = Student("Anastasia", "Software Engineering", 9.6, True)
+student2 = Student("Sam", "History", 10.0, True)
+
+print(student2.on_honor_roll())
+"""
+
+# Inheritance
+from Chef import Chef
+from ChineseChef import ChineseChef
+
+myChef = Chef()
+myChineseChef = ChineseChef()
+myChef.make_chicken()
+myChineseChef.make_chicken()
+myChef.make_special_dish()
+myChineseChef.make_special_dish()
