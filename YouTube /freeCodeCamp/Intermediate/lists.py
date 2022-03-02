@@ -1,6 +1,5 @@
 # Lists is ordered and mutable
 # can contain different data types in one list
-# []
 myList = ['banana', 'cherry', 'apple']
 print(myList)
 
