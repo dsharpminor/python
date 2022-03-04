@@ -30,7 +30,7 @@ del a[-1]
 print(a)
 
 # Let's add the elements back.
-a.extend(['c', 'd'])
+a.extend(['c', 'd'])  # extend is a convenient method for adding multiple values as separate elements, not as a new list
 print(a)
 
 # The second option would require slicing:
