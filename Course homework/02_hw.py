@@ -43,9 +43,9 @@ a.append('d')
 print(a)
 
 # The third option is pop():
-a.pop(-1)
-a.pop(-1)
-print(a)
+# a.pop(-1)
+# a.pop(-1)
+# print(a)
 
 """ Ex. 4
 Sort array a in the descending order
@@ -57,6 +57,24 @@ print(a)
 """ Ex. 5
 Create new array b that will contain all elements from a excluding first 2 elements.
 """
+# Slicing is the most obvious option, so I'm going to try it first.
 # The first two elements have indices 0 and 1, hence:
 b = a[2:]
 print(b)
+
+# Another possibility would be to copy the whole list and then remove the first two elements.
+# However, this is not efficient
+b = a.copy()
+#    or
+# b = list(a)
+#    or
+# b = a[:]
+#    and then:
+b.pop(0)
+b.pop(0)
+print(b)
+# The most important thing is not to copy lists in the following way:
+c = a
+# because
+print(id(a), id(c))
+# they refer to the same object, for instance to the object 4475677664.

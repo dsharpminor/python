@@ -48,7 +48,7 @@ print(slicing4)
 # be careful with copying lists
 
 list_org = ["one", "two", "three"]
-# list_cop = list_org  # assignment = both lists refer to the same one inside of the memory
+# list_cop = list_org  # assignment = both lists refer to the same one inside of the memory; copy by reference
 # list_cop = list_org.copy()  # makes a good new copy
 # list_cop = list(list_org)   # also makes a good new copy
 list_cop = list_org[:]   # also makes a good new copy but with the help of slicing
