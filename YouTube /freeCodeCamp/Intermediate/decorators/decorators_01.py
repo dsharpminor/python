@@ -15,6 +15,14 @@ because they basically are objects
 
 Use as many argyments/keywords as you'd like with *args, **kwargs:
 def decorator_one(*args, **kwargs)
+
+USE CASES:
+1. A timer decorator to calculate the execution time of a function.
+2. A debug decorator to print out some info about a function and its arguments
+3. A check decorator to check if the arguments fulfill some requirements
+4. Register functions like plug ins with decorators (???)
+5. Cache return values
+6. Add information / update the state
 """
 import functools
 
