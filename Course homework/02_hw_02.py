@@ -41,7 +41,7 @@ def count_total(items):
     for key in items.keys():  # add item names to a list
         key_list.append(key)
 
-    for value in ikea.values():  # calculate the sum of the values
+    for value in items.values():  # calculate the sum of the values
         total += int(value)
 
     answer = "Items: " + ', '.join(key_list) + ". Total amount: " + str(total)

@@ -32,3 +32,29 @@ except ZeroDivisionError:
     print("You can't divide by 0, dummy")
 else:
     print("It's fine")
+
+
+class ValueTooSmall(Exception):
+    def __init__(self, message, value):  # custom init method
+        self.message = message
+        self.value = value
+
+
+class ValueTooHighError(Exception):  # you want to keep these classes small
+    pass
+
+
+def test_value(x):
+    if x > 100:
+        raise ValueTooHighError("Value is too high")
+    if x < 5:
+        raise ValueTooSmall("Value is too small", x)
+
+
+try:
+    # test_value(300)
+    test_value(1)
+except ValueTooHighError as e:
+    print(e)
+except ValueTooSmall as e:
+    print(e.message, e.value)

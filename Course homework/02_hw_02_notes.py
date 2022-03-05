@@ -43,7 +43,7 @@ also last element should be separated by keyword and.
 """
 
 # Ex 1, first try
-"""
+
 words = ["apples", "bananas", "pineapples", "oranges", "lemons"]   # create a list of words
 upd_words = ', '.join(words)  # join the words with a comma
 last_comma_index = upd_words.rfind(",")  # find the last comma's index
@@ -60,7 +60,7 @@ print(upd_words)
 # Let's add a point in the end
 upd_words = upd_words + "."
 print(upd_words)
-"""
+
 
 # Ex 1, second try
 # Make a function out of it

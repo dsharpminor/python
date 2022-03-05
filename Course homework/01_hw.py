@@ -24,20 +24,22 @@ print("Im Erdnusswald hatten " + str(2) + " Zwerge ein Haus")
 
 # Ex 3
 # Write a program that will prompt user about his name, age, and hobby.
+# f-Strings
 
 
 name = input("Hi, user! What is your name?\n")
 try:
     age = input("Nice to meet you! I am Prohor. How old are you, " + name + "?\n")
-    if not float(age).is_integer():
+    # if not float(age).is_integer():
+    if not age.isnumeric():
         raise ValueError()
 except ValueError:
     print("That doesn't look like an integer to me.")
-    age = input("So, how old are you, " + name + "? This time as an integer, please.\n")
-hobby = input("I remember being " + age + " years old! Just kidding. I am a macbook, I am not that old. So, "
-              + name + ", what is your main hobby?\n")
-print("Cool! Now I know everything about you, " + name + ".\nYou are " + age + " and your main hobby is "
-      + hobby + ".\nThat's a cool hobby, by the way. I'd like doing it too if I were human, I guess.\n")
+    age = input(f"So, how old are you, {name} ? This time as an integer, please.\n")
+hobby = input(f"I remember being {age} years old! Just kidding. I am a macbook, I am not that old. \n"
+              "So, what is your main hobby?\n")
+print(f"Cool! Now I know everything about you, {name} .\nYou are {age} years old and your main hobby is {hobby}\n"
+      "That's a cool hobby, by the way. I'd like doing it too if I were human, I guess.\n")
 
 
 # Ex 4
