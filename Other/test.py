@@ -120,3 +120,14 @@ print(x == x)
  nan обозначает "не число", по сути это хоть и строка, но его тип - float.
  И его каверзность заключается в том, что этот объект не ссылается
  каждый раз на свой идентификатор, а создаёт новый, поэтому в 1 тесте и выдало false"""
+
+
+"""
+Python's map() is a built-in function that allows you 
+to process and transform all the items in an iterable
+without using an explicit for loop
+"""
+
+lst = ["java", "c++", "python"]
+lst = map(str.capitalize, lst)
+print(*lst)  # or print(list(lst))
