@@ -48,7 +48,7 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
 
-        with open("items.csv", "r") as f:
+        with open("items.csv", "r") as f:  # change the directory
             reader = csv.DictReader(f)  # we become a list of dictionaries
             items = list(reader)
             print(items)
