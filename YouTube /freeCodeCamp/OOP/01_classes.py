@@ -10,11 +10,10 @@ import csv
 
 
 class Item:
-
     pay_rate = 0.8  # The pay rate after 20% discount
     all = []
 
-    def __init__(self, name=str, price=float, quantity=int):
+    def __init__(self, name: str, price: float, quantity: int):
         print(f"An instance named {name} is created.")
 
         # Run validations to the received arguments
@@ -38,7 +37,7 @@ class Item:
     def apply_discount(self):
         # overwrite an attribute
         # self.price = int(self.price * Item.pay_rate)  # no matter what - the discount is from the class level
-        self.price = int(self.price * self.pay_rate)    # pay_rate from instance level. nothing? then class level
+        self.price = int(self.price * self.pay_rate)  # pay_rate from instance level. nothing? then class level
 
     # what if we don't have any instances to call this method from?
     # use a class method!
@@ -73,15 +72,23 @@ class Item:
         else:
             return False
 
-
     def __repr__(self):
         return f"Item(\"{self.name}\", {self.price}, {self.quantity})"
 
 
+phone1 = Item("Samsung Galaxy S10", 5000, 7)
+phone2 = Item("Samsung Galaxy S20", 5000, 7)
+
+print(phone1.calculate_total_price())
+
+"""
+CSV
 
 Item.instantiate_from_csv()
 print(Item.all)
 print(Item.is_integer(43.2))
+
+"""
 
 """
 Before CSV:
@@ -116,4 +123,3 @@ print(Item.all)  # 5 objects -> def __repr__ -> 5 readable objects
 for i in Item.all:
     print(i.name)
 """
-
