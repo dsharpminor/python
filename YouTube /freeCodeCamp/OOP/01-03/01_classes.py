@@ -6,6 +6,7 @@ Assert statements check if there's a match between code and your expectations
 Instance attributes are normal attributes.
 Class attributes are common for every item.
 """
+import csv
 
 
 class Item:
@@ -13,12 +14,12 @@ class Item:
     pay_rate = 0.8  # The pay rate after 20% discount
     all = []
 
-    def __init__(self, name: str, price: float, quantity: int):
+    def __init__(self, name=str, price=float, quantity=int):
         print(f"An instance named {name} is created.")
 
         # Run validations to the received arguments
-        assert price > 0, f"Price {price} is not greater than zero!"
-        assert quantity >= 0, f"Quantity {quantity} is not greater or equal to zero!"
+        # assert price > 0, f"Price {price} is not greater than zero!"
+        # assert quantity >= 0, f"Quantity {quantity} is not greater or equal to zero!"
 
         # Assign to self object
         self.name = name
@@ -27,7 +28,6 @@ class Item:
 
         # Actions to execute
         Item.all.append(self)
-
 
     def all_attributes(self):
         return self.name, self.price, self.quantity
@@ -40,9 +40,39 @@ class Item:
         # self.price = int(self.price * Item.pay_rate)  # no matter what - the discount is from the class level
         self.price = int(self.price * self.pay_rate)    # pay_rate from instance level. nothing? then class level
 
-    def __repr__(self):
-        return f"Item('{self.name}', {self.price}, {self.quantity})"
+    # what if we don't have any instances to call this method from?
+    # use a class method!
+    # 1. Instead of the "self" argument, use "cls"
+    # 2. We need to use the @classmethod decorator
 
+    @classmethod
+    def instantiate_from_csv(cls):
+
+        with open("items.csv", "r") as f:
+            reader = csv.DictReader(f)  # we become a list of dictionaries
+            items = list(reader)
+            print(items)
+
+            for item in items:
+                # print(item)
+                # print(item.get('name'))
+                Item(
+                    name=item.get('name'),
+                    price=item.get('price'),
+                    quantity=item.get('quantity')
+                )
+
+
+    def __repr__(self):
+        return f"Item(\"{self.name}\", {self.price}, {self.quantity})"
+
+
+
+Item.instantiate_from_csv()
+print(Item.all)
+
+"""
+Before CSV:
 
 item1 = Item("Phone", 15100, 4)
 item2 = Item("MacBook", 45000, 1)
@@ -73,5 +103,5 @@ print(Item.all)  # 5 objects -> def __repr__ -> 5 readable objects
 
 for i in Item.all:
     print(i.name)
+"""
 
-# https://youtu.be/Ej_02ICOIgs?t=3104
