@@ -18,8 +18,8 @@ class Item:
         print(f"An instance named {name} is created.")
 
         # Run validations to the received arguments
-        # assert price > 0, f"Price {price} is not greater than zero!"
-        # assert quantity >= 0, f"Quantity {quantity} is not greater or equal to zero!"
+        assert price > 0, f"Price {price} is not greater than zero!"
+        assert quantity >= 0, f"Quantity {quantity} is not greater or equal to zero!"
 
         # Assign to self object
         self.name = name
@@ -58,9 +58,20 @@ class Item:
                 # print(item.get('name'))
                 Item(
                     name=item.get('name'),
-                    price=item.get('price'),
-                    quantity=item.get('quantity')
+                    price=float(item.get('price')),
+                    quantity=int(item.get('quantity'))
                 )
+
+    # static method - no "self", we never send the object
+    # something that is not unique for an instance
+    @staticmethod
+    def is_integer(num):
+        if isinstance(num, float):
+            return num.is_integer()
+        elif isinstance(num, int):
+            return True
+        else:
+            return False
 
 
     def __repr__(self):
@@ -70,6 +81,7 @@ class Item:
 
 Item.instantiate_from_csv()
 print(Item.all)
+print(Item.is_integer(43.2))
 
 """
 Before CSV:
