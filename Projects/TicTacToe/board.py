@@ -1,5 +1,12 @@
-class Board():
+import numpy as np
 
-    def __init__(self, name='', symbol=''):
+
+class Board:
+
+    def __init__(self, name='', symbol='', empty_symbol='◻️'):
         self.name = name
         self.symbol = symbol
+        self.empty_symbol = empty_symbol
+        self.field = np.full((3, 3), empty_symbol)
+
+
