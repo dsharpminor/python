@@ -15,7 +15,7 @@ class Player:
         print(self.name)
 
     def move_it(self, b):
-        print(*b)
+        # print(*b)
 
         if self.position == '1':
             b[0][0] = self.symbol

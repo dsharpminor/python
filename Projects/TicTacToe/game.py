@@ -61,33 +61,33 @@ class Game:
 
         print(f"Empty symbol: {Game.empty_symbol}")
 
-    # @staticmethod
-    # def win_check():
-    #     if (Game.board[0][0] == Game.board[0][1] == Game.board[0][2] == Game.player_symbol or
-    #             Game.board[1][0] == Game.board[1][1] == Game.board[1][2] == Game.player_symbol or
-    #             Game.board[2][0] == Game.board[2][1] == Game.board[2][2] == Game.player_symbol or
-    #             Game.board[0][0] == Game.board[1][0] == Game.board[2][0] == Game.player_symbol or
-    #             Game.board[0][1] == Game.board[1][1] == Game.board[2][1] == Game.player_symbol or
-    #             Game.board[0][2] == Game.board[1][2] == Game.board[2][2] == Game.player_symbol or
-    #             Game.board[0][0] == Game.board[1][1] == Game.board[2][2] == Game.player_symbol or
-    #             Game.board[0][2] == Game.board[1][1] == Game.board[2][0] == Game.player_symbol):
-    #         print("Player 1 won. I love you Prohor")
-    #
-    #         return True
-    #
-    #     elif (Game.board[0][0] == Game.board[0][1] == Game.board[0][2] == Game.computer_symbol or
-    #           Game.board[1][0] == Game.board[1][1] == Game.board[1][2] == Game.computer_symbol or
-    #           Game.board[2][0] == Game.board[2][1] == Game.board[2][2] == Game.computer_symbol or
-    #           Game.board[0][0] == Game.board[1][0] == Game.board[2][0] == Game.computer_symbol or
-    #           Game.board[0][1] == Game.board[1][1] == Game.board[2][1] == Game.computer_symbol or
-    #           Game.board[0][2] == Game.board[1][2] == Game.board[2][2] == Game.computer_symbol or
-    #           Game.board[0][0] == Game.board[1][1] == Game.board[2][2] == Game.computer_symbol or
-    #           Game.board[0][2] == Game.board[1][1] == Game.board[2][0] == Game.computer_symbol):
-    #         print("Player 2 won")
-    #
-    #         return True
-    #     else:
-    #         return False
+
+    def win_check(self):
+        if (self.my_board.field[0][0] == self.my_board.field[0][1] == self.my_board.field[0][2] == self.first_player.symbol or
+                self.my_board.field[1][0] == self.my_board.field[1][1] == self.my_board.field[1][2] == self.first_player.symbol or
+                self.my_board.field[2][0] == self.my_board.field[2][1] == self.my_board.field[2][2] == self.first_player.symbol or
+                self.my_board.field[0][0] == self.my_board.field[1][0] == self.my_board.field[2][0] == self.first_player.symbol or
+                self.my_board.field[0][1] == self.my_board.field[1][1] == self.my_board.field[2][1] == self.first_player.symbol or
+                self.my_board.field[0][2] == self.my_board.field[1][2] == self.my_board.field[2][2] == self.first_player.symbol or
+                self.my_board.field[0][0] == self.my_board.field[1][1] == self.my_board.field[2][2] == self.first_player.symbol or
+                self.my_board.field[0][2] == self.my_board.field[1][1] == self.my_board.field[2][0] == self.first_player.symbol):
+            print("Player 1 won. I love you Prohor")
+
+            return True
+
+        elif (self.my_board.field[0][0] == self.my_board.field[0][1] == self.my_board.field[0][2] == self.second_player.symbol or
+                self.my_board.field[1][0] == self.my_board.field[1][1] == self.my_board.field[1][2] == self.second_player.symbol or
+                self.my_board.field[2][0] == self.my_board.field[2][1] == self.my_board.field[2][2] == self.second_player.symbol or
+                self.my_board.field[0][0] == self.my_board.field[1][0] == self.my_board.field[2][0] == self.second_player.symbol or
+                self.my_board.field[0][1] == self.my_board.field[1][1] == self.my_board.field[2][1] == self.second_player.symbol or
+                self.my_board.field[0][2] == self.my_board.field[1][2] == self.my_board.field[2][2] == self.second_player.symbol or
+                self.my_board.field[0][0] == self.my_board.field[1][1] == self.my_board.field[2][2] == self.second_player.symbol or
+                self.my_board.field[0][2] == self.my_board.field[1][1] == self.my_board.field[2][0] == self.second_player.symbol):
+            print("Player 2 won")
+
+            return True
+        else:
+            return False
 
     def ask_first(self):
         self.first_player.position = input("Which position? ")
@@ -124,11 +124,10 @@ class Game:
             self.second_player.move_it(self.my_board.field)
 
         # won = self.first_player.win()
-        # won = self.win_check()
+        won = self.win_check()
 
         # self.move(first, position)
         print(f"\nProhor's move:")
-        print('\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.my_board.field]))
         print('\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.my_board.field]))
 
 
