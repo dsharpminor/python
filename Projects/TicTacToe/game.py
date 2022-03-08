@@ -1,8 +1,5 @@
 import random
 import numpy as np
-from firstplayer import FirstPlayer
-from secondplayer import SecondPlayer
-
 
 class Game:
     player_symbol = ''
@@ -21,9 +18,9 @@ class Game:
 
     def __init__(self):
         print("Loading...")
-        self.first_player = FirstPlayer()
-        self.second_player = SecondPlayer()
-        print(self.second_player)
+        # self.first_player = FirstPlayer()
+        # self.second_player = SecondPlayer()
+        # print(self.second_player)
 
     def start(self):
         self.greeting()
@@ -31,14 +28,6 @@ class Game:
 
     def greeting(self):
         print(f"Hello! \nLet us begin the game.")
-
-        fp_name = input("What is your name?\n")
-        FirstPlayer.name = fp_name
-        print(FirstPlayer.name)
-
-        sp_name = input("What is the name of your opponent?\n")
-        SecondPlayer.name = sp_name
-        print(SecondPlayer.name)
 
         self.choose_symbols()
 
@@ -180,8 +169,6 @@ class Game:
         Game.moves_number += 1
         won = False
 
-        fp = FirstPlayer()
-        sp = SecondPlayer()
 
 
         if Game.moves_number % 2 != 0:

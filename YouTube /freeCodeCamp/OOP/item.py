@@ -110,3 +110,11 @@ class Item:  # parent class
         return "AAA"
 """
 
+"""
+   class BAR():
+        def __init__(self):
+            self.foo1 = FOO()
+
+    def something_else(self, a, b):
+        self.foo1.do_something(a, b)
+"""
