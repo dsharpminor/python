@@ -5,7 +5,7 @@ class Item:  # parent class
     pay_rate = 0.8  # The pay rate after 20% discount
     all = []
 
-    def __init__(self, name: str, price: float, quantity = 0):
+    def __init__(self, name: str, price: float, quantity=0):
         print(f"An instance named {name} is created.")
 
         # Run validations to the received arguments
@@ -57,7 +57,7 @@ class Item:  # parent class
 
                 # static method - no "self", we never send the object
 
-    # something that is not unique for an instance
+    # Static methods are used when we need to do something that is not unique for an instance
     @staticmethod
     def is_integer(num):
         if isinstance(num, float):
