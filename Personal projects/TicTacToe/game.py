@@ -6,9 +6,7 @@ from board import Board
 class Game:
 
     possible_symbols = ['🌸', '🌻', '🌷', '💻']
-
     left_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-
     moves_number = 0
 
     def __init__(self):
@@ -60,17 +58,17 @@ class Game:
 
         self.second_player.symbol = random.choice(Game.possible_symbols)
         # print(*Game.possible_symbols)
-        print(f"Prohor has chosen the following symbol: {self.second_player.symbol}")
+        print(f"Computer has chosen the following symbol: {self.second_player.symbol}")
         # print("Out of:")
 
     def __the_winner(self):
         first_wins = self.first_player._win(self.b.field)
         second_wins = self.second_player._win(self.b.field)
         if first_wins:
-            print("Player 1 won. I love you Prohor <3")
+            print("Player won.")
             return True
         elif second_wins:
-            print("Player 2 won - Prohor <3")
+            print("Computer won.")
             return True
         else:
             return False
@@ -89,7 +87,8 @@ class Game:
         # print("Second player")
         Game.left_positions.remove(self.second_player.position)
 
-    def _reset(self):
+    @staticmethod
+    def _reset():
         Game.player_symbol = ''
         Game.computer_symbol = ''
 
@@ -98,7 +97,6 @@ class Game:
         Game.left_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
         Game.moves_number = 0
-
 
     def __draw_field(self):
 
