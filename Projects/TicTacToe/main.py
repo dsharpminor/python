@@ -1,13 +1,12 @@
 from game import Game
-from player import Player
-
+# from board import Board
 
 my_game = Game()
 my_game.start()
 
-# fp = Player(position='1', symbol='*')
-# sp = Player(position='5', symbol='-')
-#
-# fp.test()
-# fp.move_it()
-# sp.move_it()
+# board = Board()
+# print(board.field)
+# board.field[0][0] = '1'
+# print(board.field)
+# board.reset_board()
+# print(board.field)

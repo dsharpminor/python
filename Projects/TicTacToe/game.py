@@ -1,5 +1,4 @@
 import random
-import numpy as np
 from player import Player
 from board import Board
 
@@ -9,32 +8,40 @@ class Game:
     computer_symbol = ''
 
     possible_symbols = ['🌸', '🌻', '🌷', '💻']
-    # possible_symbols = ['🌸', '🌻']
 
-    left_positions = ['1', '2', '3',
-                      '4', '5', '6',
-                      '7', '8', '9']
+    left_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
     empty_symbol = '◻️'
 
     moves_number = 0
 
     def __init__(self):
-        # print("Loading...")
         self.first_player = Player()
         self.second_player = Player()
         self.b = Board()
 
     def start(self):
-        self.greeting()
-        self.__draw_field()
+        while True:
+            self._start_one_game()
+            print("---------")
+            repeat = input("Would you like to play again? ")
+            print("---------")
+            if 'yes' not in repeat:
+                return False
 
-    def greeting(self):
+
+    def _start_one_game(self):
+        self.__greeting()
+        self.__draw_field()
+        self._reset()
+        self.b.reset_board()
+
+    def __greeting(self):
         # print(f"Hello! \nLet us begin the game.")
 
-        self.choose_symbols()
+        self.__choose_symbols()
 
-    def choose_symbols(self):
+    def __choose_symbols(self):
         self.__set_symbol()
         self.__computer_set_symbol()
 
@@ -60,9 +67,9 @@ class Game:
         print(f"Prohor has chosen the following symbol: {self.second_player.symbol}")
         # print("Out of:")
 
-    def the_winner(self):
-        first_wins = self.first_player.win(self.b.field)
-        second_wins = self.second_player.win(self.b.field)
+    def __the_winner(self):
+        first_wins = self.first_player._win(self.b.field)
+        second_wins = self.second_player._win(self.b.field)
         if first_wins:
             print("Player 1 won. I love you Prohor <3")
             return True
@@ -72,20 +79,32 @@ class Game:
         else:
             return False
 
-
-    def ask_first(self):
+    def __ask_first(self):
         self.first_player.position = input("Which position? ")
         if self.first_player.position in Game.left_positions:
             Game.left_positions.remove(self.first_player.position)
         else:
             print("Invalid input")
-            self.ask_first()
+            self.__ask_first()
 
-    def randomize(self):
+    def __randomize(self):
         self.second_player.position = random.choice(Game.left_positions)
         # print(f"AAA Prohor's pos: {self.second_player.position}")
         # print("Second player")
         Game.left_positions.remove(self.second_player.position)
+
+    def _reset(self):
+        Game.player_symbol = ''
+        Game.computer_symbol = ''
+
+        Game.possible_symbols = ['🌸', '🌻', '🌷', '💻']
+
+        Game.left_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+        Game.empty_symbol = '◻️'
+
+        Game.moves_number = 0
+
 
     def __draw_field(self):
 
@@ -97,15 +116,15 @@ class Game:
         print("---------")
 
         if Game.moves_number % 2 != 0:
-            self.ask_first()
-            self.first_player.move_it(self.b.field)
+            self.__ask_first()
+            self.first_player._move_it(self.b.field)
 
         else:
-            self.randomize()
-            self.second_player.move_it(self.b.field)
+            self.__randomize()
+            self.second_player._move_it(self.b.field)
 
         # won = self.first_player.win()
-        won = self.the_winner()
+        won = self.__the_winner()
 
         # self.move(first, position)
         # print(f"\nProhor's move:")
