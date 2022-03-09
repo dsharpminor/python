@@ -4,14 +4,10 @@ from board import Board
 
 
 class Game:
-    player_symbol = ''
-    computer_symbol = ''
 
     possible_symbols = ['🌸', '🌻', '🌷', '💻']
 
     left_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-    empty_symbol = '◻️'
 
     moves_number = 0
 
@@ -101,34 +97,37 @@ class Game:
 
         Game.left_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-        Game.empty_symbol = '◻️'
-
         Game.moves_number = 0
 
 
     def __draw_field(self):
 
-        Game.moves_number += 1
-        won = False
+        if len(self.left_positions) > 0:
 
-        print("---------")
-        print(f"Iteration nr. {Game.moves_number}")
-        print("---------")
+            Game.moves_number += 1
+            won = False
 
-        if Game.moves_number % 2 != 0:
-            self.__ask_first()
-            self.first_player._move_it(self.b.field)
+            print("---------")
+            print(f"Iteration nr. {Game.moves_number}")
+            print("---------")
+
+            if Game.moves_number % 2 != 0:
+                self.__ask_first()
+                self.first_player._move_it(self.b.field)
+
+            else:
+                self.__randomize()
+                self.second_player._move_it(self.b.field)
+
+            # won = self.first_player.win()
+            won = self.__the_winner()
+
+            # self.move(first, position)
+            # print(f"\nProhor's move:")
+            print('\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.b.field]))
+
+            if not won:
+                self.__draw_field()
 
         else:
-            self.__randomize()
-            self.second_player._move_it(self.b.field)
-
-        # won = self.first_player.win()
-        won = self.__the_winner()
-
-        # self.move(first, position)
-        # print(f"\nProhor's move:")
-        print('\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.b.field]))
-
-        if not won:
-            self.__draw_field()
+            print("It's a draw!")
