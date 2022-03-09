@@ -15,7 +15,7 @@ class Board:
         self.moves_number = moves_number
         self.won = won
 
-    def reset_board(self):
+    def set_board(self):
         self.field = np.full((3, 3), self.empty_symbol)
         self.possible_symbols = ['🌸', '🌻', '🌷', '💻']
         self.left_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9']

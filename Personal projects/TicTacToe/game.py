@@ -10,9 +10,7 @@ class Game(Player):
         self.first_player = Player()
         self.second_player = Player()
         self.b = Board()
-        self.b.possible_symbols = ['🌸', '🌻', '🌷', '💻']
-        self.b.left_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-        self.b.moves_number = 0
+        self.b.set_board()
 
     def start(self):
         while True:
@@ -26,7 +24,7 @@ class Game(Player):
     def __start_one_game(self):
         self.__choose_symbols()
         self.__draw_field()
-        self.b.reset_board()
+        self.b.set_board()
 
     def __choose_symbols(self):
         self.first_player._input_symbol()
