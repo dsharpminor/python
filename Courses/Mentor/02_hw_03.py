@@ -12,14 +12,15 @@ has resulted in an improper chess board.
 
 """
 
-my_dict = {'1h': 'wpawn', '6c': 'wpawn', '2g': 'wpawn',
-           '2h': 'wpawn', '7c': 'wpawn',
-           '3h': 'wpawn', '8c': 'wpawn',
-           '4h': 'wpawn', '9c': 'wpawn'}
+# my_dict = {'1h': 'wpawn', '6c': 'wpawn', '2g': 'wpawn',
+#            '2h': 'wpawn', '7c': 'wpawn',
+#            '3h': 'wpawn', '8c': 'wpawn',
+#            '4h': 'wpawn', '9c': 'wpawn'}
 
+my_dict = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
 
 def calculate(value, color):
-    print(value)
+    # print(f'{value}')
     if value == 'pawn':
         color['pawns'] += 1
     if value == 'rook':
@@ -94,9 +95,13 @@ def isValidChessBoard(dict):
         answer = False
 
     boolean_list = [wa, ba, answer]
+    print(f'White: {white}')
+    print(f'White: {black}')
 
     if False in boolean_list:
         return False
+    else:
+        return True
 
 
 print(isValidChessBoard(my_dict))
