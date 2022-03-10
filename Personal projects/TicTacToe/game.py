@@ -14,14 +14,14 @@ class Game(Player):
 
     def start(self):
         while True:
-            self.__start_one_game()
+            self.__play_a_game()
             print("---------")
             repeat = input("Would you like to play again? ")
             print("---------")
             if 'yes' not in repeat:
                 return False
 
-    def __start_one_game(self):
+    def __play_a_game(self):
         self.__choose_symbols()
         self.__draw_field()
         self.b.set_board()
@@ -29,11 +29,6 @@ class Game(Player):
     def __choose_symbols(self):
         self.first_player._input_symbol()
         self.second_player._random_symbol(self.b.possible_symbols)
-
-    def __remove_chosen_symbols(self):
-
-        self.first_player._remove_chosen_symbol_from_possible_symbols(self.b.possible_symbols)
-        self.second_player._remove_chosen_symbol_from_possible_symbols(self.b.possible_symbols)
 
     def __the_winner(self):
         first_wins = self.first_player._win(self.b.field)
@@ -48,9 +43,9 @@ class Game(Player):
             return False
 
     def __ask_first(self):  # for 1st player
-        self.first_player.position = input("Which position? ")
-        if self.first_player.position in self.b.left_positions:
-            self.b.left_positions.remove(self.first_player.position)
+        pos = self.first_player._ask_for_position()
+        if pos in self.b.left_positions:
+            self.b.left_positions.remove(pos)
         else:
             print("Invalid input")
             self.__ask_first()

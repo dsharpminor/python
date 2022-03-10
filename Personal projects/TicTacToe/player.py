@@ -48,7 +48,7 @@ class Player:
         else:
             return False
 
-    def _remove_chosen_symbol_from_possible_symbols(self, all_symbols):
+    def _remove(self, all_symbols):
         if self.symbol in all_symbols:
             all_symbols.remove(self.symbol)
 
@@ -63,7 +63,18 @@ class Player:
         else:
             print(f"Player has chosen the following symbol: {self.symbol}")
 
+        self._remove(self.b.possible_symbols)
+
     def _random_symbol(self, all_symbols):
 
         self.symbol = random.choice(all_symbols)
         print(f"Computer has chosen the following symbol: {self.symbol}")
+
+    def _ask_for_position(self):
+        self.position = input("Which position? ")
+        return self.position
+
+
+
+
+

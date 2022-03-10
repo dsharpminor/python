@@ -23,5 +23,5 @@ class Board(Player):
         self.possible_symbols = ['🌸', '🌻', '🌷', '💻']
         self.left_positions = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
         self.moves_number = 0
-        # print('\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.field]))
+        print('\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.field]))
 
