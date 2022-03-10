@@ -18,86 +18,85 @@ my_dict = {'1h': 'wpawn', '6c': 'wpawn', '2g': 'wpawn',
            '4h': 'wpawn', '9c': 'wpawn'}
 
 
+def calculate(value, color):
+    print(value)
+    if value == 'pawn':
+        color['pawns'] += 1
+    if value == 'rook':
+        color['rooks'] += 1
+    if value == 'knight':
+        color['knights'] += 1
+    if value == 'bishop':
+        color['bishops'] += 1
+    if value == 'queen':
+        color['queen'] += 1
+    if value == 'king':
+        color['king'] += 1
+
+
+def restrict_pieces(dictionary):
+    for k, v in dictionary.items():
+        if k == 'pawns' and v > 8:
+            print("There cannot be more than eight pawns")
+            return False
+        if k == 'rooks' and v > 2:
+            print("There cannot be more than two rooks")
+            return False
+        if k == 'knights' and v > 2:
+            print("There cannot be more than two knights")
+            return False
+        if k == 'bishops' and v > 2:
+            print("There cannot be more than two bishops")
+            return False
+        if k == 'queen' and v > 1:
+            print("There cannot be more than one queen")
+            return False
+        if k == 'king' and v > 1:
+            print("There cannot be more than one king")
+            return False
+        else:
+            return True
+
+
 def isValidChessBoard(dict):
     b = 0
     w = 0
-    wpawns = 0
-    wrooks = 0
-    wknights = 0
-    wbishops = 0
-    wqueen = 0
-    wking = 0
-
-    bpawns = 0
-    brooks = 0
-    bknights = 0
-    bbishops = 0
-    bqueen = 0
-    bking = 0
+    answer = True
+    white = {'pawns': 0, 'rooks': 0, 'knights': 0, 'bishops': 0, 'queen': 0, 'king': 0}
+    black = {'pawns': 0, 'rooks': 0, 'knights': 0, 'bishops': 0, 'queen': 0, 'king': 0}
 
     for key, value in dict.items():
         figures = ['pawn', 'knight', 'bishop', 'rook', 'queen', 'king']
-        # print(key, value)
-        # print(value[1:])
 
         # check whether the board cells are valid or not
         if key[0] not in '123456789' or key[1] not in 'abcdefgh':
             print(f"{key} is wrong")
-            return False
+            answer = False
 
         # check whether the figure names are valid or not
         if value[0] not in 'bw' or value[1:] not in figures:
             print(f"{value[0]} not in b or {value[1:]} is not a valid figure")
-            return False
+            answer = False
 
         if value[0] == 'b':
             b += 1
-            if value[1:] == 'pawn':
-                bpawns += 1
-            if value[1:] == 'rook':
-                brooks += 1
-            if value[1:] == 'knight':
-                bknights += 1
-            if value[1:] == 'bishop':
-                bbishops += 1
-            if value[1:] == 'queen':
-                bqueen += 1
-            if value[1:] == 'king':
-                bking += 1
+            calculate(value[1:], black)
 
         if value[0] == 'w':
             w += 1
-            if value[1:] == 'pawn':
-                wpawns += 1
-            if value[1:] == 'rook':
-                wrooks += 1
-            if value[1:] == 'knight':
-                wknights += 1
-            if value[1:] == 'bishop':
-                wbishops += 1
-            if value[1:] == 'queen':
-                wqueen += 1
-            if value[1:] == 'king':
-                wking += 1
+            calculate(value[1:], white)
 
-        print(b, w)
-        if b >= 16 or w >= 16:
-            print("There are way too many pieces")
-            return False
+    wa = restrict_pieces(white)
+    ba = restrict_pieces(black)
 
-        if (brooks or wrooks or
-            bknights or wknights or
-            bbishops or wbishops) > 2:
-            print("There has to be only a pair of rooks, knights and bishops of each color")
-            return False
+    if b >= 16 or w >= 16:
+        print("There are way too many pieces")
+        answer = False
 
-        if (wking or bking or wqueen or bqueen) > 1:
-            print("There has to be only one queen/king of one color")
-            return False
+    boolean_list = [wa, ba, answer]
 
-        if w or b == 0:
-            print("Pieces of both color have to be placed on the board")
-            return False
+    if False in boolean_list:
+        return False
 
 
 print(isValidChessBoard(my_dict))
