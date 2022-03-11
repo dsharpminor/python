@@ -60,8 +60,6 @@ def restrict_pieces(dictionary):
 
 
 def isValidChessBoard(dict):
-    b = 0
-    w = 0
     answer = True
     white = {'pawns': 0, 'rooks': 0, 'knights': 0, 'bishops': 0, 'queen': 0, 'king': 0}
     black = {'pawns': 0, 'rooks': 0, 'knights': 0, 'bishops': 0, 'queen': 0, 'king': 0}
@@ -80,23 +78,24 @@ def isValidChessBoard(dict):
             answer = False
 
         if value[0] == 'b':
-            b += 1
             calculate(value[1:], black)
 
         if value[0] == 'w':
-            w += 1
             calculate(value[1:], white)
 
     wa = restrict_pieces(white)
     ba = restrict_pieces(black)
+
+    b = sum(black.values())
+    w = sum(white.values())
 
     if b >= 16 or w >= 16:
         print("There are way too many pieces")
         answer = False
 
     boolean_list = [wa, ba, answer]
-    print(f'White: {white}')
-    print(f'White: {black}')
+    print(f'There are {w} white pieces. {white}')
+    print(f'There are {b} black pieces. {black}')
 
     if False in boolean_list:
         return False
