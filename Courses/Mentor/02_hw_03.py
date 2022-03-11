@@ -12,10 +12,11 @@ has resulted in an improper chess board.
 
 """
 
-my_dict = {'1h': 'wpawn', '6c': 'wpawn', '2g': 'wpawn', '3g': 'wking', '4g': 'wking',
+my_dict = {'1h': 'wpawn', '6c': 'wpawn', '2g': 'wpawn', '3g': 'bking', '4g': 'bking',
            '2h': 'wpawn', '7c': 'wpawn',
            '3h': 'wpawn', '8c': 'wpawn',
            '4h': 'wpawn', '9c': 'wpawn'}
+
 
 # my_dict = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
 
@@ -35,29 +36,32 @@ def calculate(value, color):
         color['king'] += 1
 
 
-def restrict_pieces(dictionary):
+def restrict_pieces(dictionary, color):
     a = True
     for k, v in dictionary.items():
         if k == 'pawns' and v > 8:
-            print("There cannot be more than eight pawns of one color.")
+            print(f"There cannot be more than eight {color} pawns.")
             a = False
         if k == 'rooks' and v > 2:
-            print("There cannot be more than two rooks of one color.")
+            print(f"There cannot be more than two {color} rooks.")
             a = False
         if k == 'knights' and v > 2:
-            print("There cannot be more than two knights of one color.")
+            print(f"There cannot be more than two {color} knights.")
             a = False
         if k == 'bishops' and v > 2:
-            print("There cannot be more than two bishops of one color.")
+            print(f"There cannot be more than two {color} bishops.")
             a = False
         if k == 'queen' and v > 1:
-            print("There cannot be more than one queen of one color.")
+            print(f"There cannot be more than one {color} queen.")
             a = False
         if k == 'king' and v > 1:
-            print("There cannot be more than one king of one color.")
+            print(f"There cannot be more than one {color} king.")
             a = False
+    if sum(dictionary.values()) > 16:
+        print(f"There cannot be more than 16 {color} pieces.")
 
     return a
+
 
 def isValidChessBoard(dict):
     answer = True
@@ -83,27 +87,10 @@ def isValidChessBoard(dict):
         if value[0] == 'w':
             calculate(value[1:], white)
 
-    wa = restrict_pieces(white)
-    ba = restrict_pieces(black)
-
-    if wa is False and ba is False:
-        print("There is a problem with both white and black figures")
-    elif wa is False:
-        print("There is a problem with white figures only.")
-    elif ba is False:
-        print("There is a problem with black figures only.")
-
-
-    b = sum(black.values())
-    w = sum(white.values())
-
-    if b >= 16 or w >= 16:
-        print("There are way too many pieces")
-        answer = False
+    wa = restrict_pieces(white, 'white')
+    ba = restrict_pieces(black, 'black')
 
     boolean_list = [wa, ba, answer]
-    # print(f'There are {w} white pieces. {white}')
-    # print(f'There are {b} black pieces. {black}')
 
     if False in boolean_list:
         return False
