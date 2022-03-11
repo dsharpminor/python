@@ -39,24 +39,25 @@ def restrict_pieces(dictionary):
     a = True
     for k, v in dictionary.items():
         if k == 'pawns' and v > 8:
-            print("There cannot be more than eight pawns")
+            print("There cannot be more than eight pawns of one color.")
             a = False
         if k == 'rooks' and v > 2:
-            print("There cannot be more than two rooks")
+            print("There cannot be more than two rooks of one color.")
             a = False
         if k == 'knights' and v > 2:
-            print("There cannot be more than two knights")
+            print("There cannot be more than two knights of one color.")
             a = False
         if k == 'bishops' and v > 2:
-            print("There cannot be more than two bishops")
+            print("There cannot be more than two bishops of one color.")
             a = False
         if k == 'queen' and v > 1:
-            print("There cannot be more than one queen")
+            print("There cannot be more than one queen of one color.")
             a = False
         if k == 'king' and v > 1:
-            print("There cannot be more than one king")
+            print("There cannot be more than one king of one color.")
             a = False
 
+    return a
 
 def isValidChessBoard(dict):
     answer = True
@@ -85,6 +86,14 @@ def isValidChessBoard(dict):
     wa = restrict_pieces(white)
     ba = restrict_pieces(black)
 
+    if wa is False and ba is False:
+        print("There is a problem with both white and black figures")
+    elif wa is False:
+        print("There is a problem with white figures only.")
+    elif ba is False:
+        print("There is a problem with black figures only.")
+
+
     b = sum(black.values())
     w = sum(white.values())
 
@@ -93,8 +102,8 @@ def isValidChessBoard(dict):
         answer = False
 
     boolean_list = [wa, ba, answer]
-    print(f'There are {w} white pieces. {white}')
-    print(f'There are {b} black pieces. {black}')
+    # print(f'There are {w} white pieces. {white}')
+    # print(f'There are {b} black pieces. {black}')
 
     if False in boolean_list:
         return False
