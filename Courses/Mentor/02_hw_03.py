@@ -12,12 +12,12 @@ has resulted in an improper chess board.
 
 """
 
-# my_dict = {'1h': 'wpawn', '6c': 'wpawn', '2g': 'wpawn',
-#            '2h': 'wpawn', '7c': 'wpawn',
-#            '3h': 'wpawn', '8c': 'wpawn',
-#            '4h': 'wpawn', '9c': 'wpawn'}
+my_dict = {'1h': 'wpawn', '6c': 'wpawn', '2g': 'wpawn', '3g': 'wking', '4g': 'wking',
+           '2h': 'wpawn', '7c': 'wpawn',
+           '3h': 'wpawn', '8c': 'wpawn',
+           '4h': 'wpawn', '9c': 'wpawn'}
 
-my_dict = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
+# my_dict = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
 
 def calculate(value, color):
     # print(f'{value}')
@@ -36,27 +36,26 @@ def calculate(value, color):
 
 
 def restrict_pieces(dictionary):
+    a = True
     for k, v in dictionary.items():
         if k == 'pawns' and v > 8:
             print("There cannot be more than eight pawns")
-            return False
+            a = False
         if k == 'rooks' and v > 2:
             print("There cannot be more than two rooks")
-            return False
+            a = False
         if k == 'knights' and v > 2:
             print("There cannot be more than two knights")
-            return False
+            a = False
         if k == 'bishops' and v > 2:
             print("There cannot be more than two bishops")
-            return False
+            a = False
         if k == 'queen' and v > 1:
             print("There cannot be more than one queen")
-            return False
+            a = False
         if k == 'king' and v > 1:
             print("There cannot be more than one king")
-            return False
-        else:
-            return True
+            a = False
 
 
 def isValidChessBoard(dict):
