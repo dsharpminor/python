@@ -31,9 +31,9 @@ print(stop-start)
 
 # formatting strings
 
-var = "Tom"
-my_var = "the variable is %s" % var  # s - string, d - integer, f - float
-print(my_var)
+var = "Hello"
+my_sentence = "the variable's value is \"%s\"" % var
+print("----" + my_sentence)
 
 # % (the very old way)
 var2 = 3.12345678

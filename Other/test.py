@@ -15,9 +15,9 @@
 # palindrome = lambda text: text == text[::-1]
 # print(palindrome("heheh"))
 
-a = ([],)
-a[0].extend([1])
-print(a[0] == [1])
+# a = ([],)
+# a[0].extend([1])
+# print(a[0] == [1])
 
 """
 Tuples всегда immutable, то есть кортежи модифицировать нельзя. 
