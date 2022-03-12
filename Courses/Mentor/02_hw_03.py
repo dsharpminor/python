@@ -12,10 +12,13 @@ has resulted in an improper chess board.
 
 """
 
-my_dict = {'1h': 'wpawn', '6c': 'wpawn', '2g': 'wpawn', '3g': 'bking', '4g': 'bking',
-           '2h': 'wpawn', '7c': 'wpawn',
-           '3h': 'wpawn', '8c': 'wpawn',
-           '4h': 'wpawn', '9c': 'wpawn'}
+too_many_figures = {'1h': 'wpawn', '6c': 'wpawn', '2g': 'wpawn', '3g': 'bking', '4g': 'bking',
+                    '2h': 'wpawn', '7c': 'wpawn', '3h': 'wpawn', '8c': 'wpawn', '4h': 'wpawn', '9c': 'wpawn',
+                    '3c': 'wpawn'}
+
+wrong_cell_names = {'ah': 'bking', '6z': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
+white_only = {'1a': 'wking'}
+long_cell_name = {'4a': 'wqueen', '12e': 'bking', '7e': 'wrook', '6d': 'bpawn'}
 
 
 # my_dict = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
@@ -40,22 +43,28 @@ def restrict_pieces(dictionary, color):
     a = True
     for k, v in dictionary.items():
         if k == 'pawns' and v > 8:
-            print(f"There cannot be more than eight {color} pawns.")
+            print(
+                f"There cannot be more than 8 {color} pawns, but there are {v} of them. Please remove {v - 8} of them.")
             a = False
         if k == 'rooks' and v > 2:
-            print(f"There cannot be more than two {color} rooks.")
+            print(
+                f"There cannot be more than 2 {color} rooks, but there are {v} of them. Please remove {v - 2} of them.")
             a = False
         if k == 'knights' and v > 2:
-            print(f"There cannot be more than two {color} knights.")
+            print(f"There cannot be more than 2 {color} knights, but there are {v} of them. Please remove {v - 2} of "
+                  f"them.")
             a = False
         if k == 'bishops' and v > 2:
-            print(f"There cannot be more than two {color} bishops.")
+            print(f"There cannot be more than 2 {color} bishops, but there are {v} of them. Please remove {v - 2} of "
+                  f"them.")
             a = False
         if k == 'queen' and v > 1:
-            print(f"There cannot be more than one {color} queen.")
+            print(
+                f"There cannot be more than 1 {color} queen, but there are {v} of them. Please remove {v - 1} of them.")
             a = False
         if k == 'king' and v > 1:
-            print(f"There cannot be more than one {color} king.")
+            print(
+                f"There cannot be more than 1 {color} king, but there are {v} of them. Please remove {v - 1} of them.")
             a = False
     if sum(dictionary.values()) > 16:
         print(f"There cannot be more than 16 {color} pieces.")
@@ -72,8 +81,8 @@ def isValidChessBoard(dict):
         figures = ['pawn', 'knight', 'bishop', 'rook', 'queen', 'king']
 
         # check whether the board cells are valid or not
-        if key[0] not in '123456789' or key[1] not in 'abcdefgh':
-            print(f"{key} is wrong")
+        if key[0] not in '123456789' or key[1] not in 'abcdefgh' or len(key) > 2:
+            print(f"Non-existent cell: {key}")
             answer = False
 
         # check whether the figure names are valid or not
@@ -87,6 +96,25 @@ def isValidChessBoard(dict):
         if value[0] == 'w':
             calculate(value[1:], white)
 
+    all_white = sum(white.values())
+    all_black = sum(black.values())
+
+    if all_white == 0 and all_black != 0:
+        print("There are 0 white pieces.")
+        answer = False
+
+    if all_black == 0 and all_white != 0:
+        print("There are 0 black pieces.")
+        answer = False
+
+    if white['king'] == 0:
+        print("There is no white king on the board.")
+        answer = False
+
+    if black['king'] == 0:
+        print("There is no white king on the board.")
+        answer = False
+
     wa = restrict_pieces(white, 'white')
     ba = restrict_pieces(black, 'black')
 
@@ -98,4 +126,28 @@ def isValidChessBoard(dict):
         return True
 
 
-print(isValidChessBoard(my_dict))
+print(isValidChessBoard(too_many_figures))
+"""
+There is no white king on the board.
+There cannot be more than 8 white pawns, but there are 10 of them. Please remove 2 of them.
+There cannot be more than 1 black king, but there are 2 of them. Please remove 1 of them.
+"""
+print('----------')
+print(isValidChessBoard(wrong_cell_names))
+"""
+Non-existent cell: ah
+Non-existent cell: 6z
+"""
+print('----------')
+print(isValidChessBoard(white_only))
+"""
+There are 0 black pieces.
+There is no white king on the board.
+"""
+print('----------')
+print(isValidChessBoard(long_cell_name))
+"""
+Non-existent cell: 12e
+There is no white king on the board.
+False
+"""
