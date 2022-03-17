@@ -2,6 +2,9 @@ import random
 
 machen = ["machen", "mache", "machst", "macht", "machen", "macht", "machen"]
 sein = ["sein", "bin", "bist", "ist", "sind", "seid", "sind"]
+fragen = ["fragen", "frage", "fragst", "fragt", "fragen", "fragt", "fragen"]
+
+alle_Verben = [machen, sein, fragen]
 
 
 def ask_questions(values):
@@ -12,14 +15,14 @@ def ask_questions(values):
     answer = input(f"{ran} [{next(iter(values))}] - {ran} ")
 
     if answer == questions.get(ran):
-        print("Gut! Das ist richtig.")
-        ask_questions(values)
+        print(" ✅ Gut! Das ist richtig.")
     else:
-        print("Leider ist die Antwort falsch... :(")
-        ask_questions(values)
+        print(" ❌ Leider ist die Antwort falsch... :(")
+        print(f"Die richtige Antwort wäre: \"{ran} {questions.get(ran)}\"")
 
-#
-# verbs = [ask_questions(machen), ask_questions(sein)]
-# random.choice(verbs)()
 
-ask_questions(machen)
+# functions = [ask_questions]
+
+for i in range(10):  # call each function 3 times
+    # for func in functions:
+    ask_questions(random.choice(alle_Verben))
